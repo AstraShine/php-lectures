@@ -10,7 +10,7 @@ class InMemoryTaskRepository implements TaskRepositoryInterface
         return [
             new Task("Купить кофе"),
             new Task("Проспать пары"),
-            new Task("Опоздать на пары")
+            new Task("Опоздать на пары"),
         ];
     }
 }
