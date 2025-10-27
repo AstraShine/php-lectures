@@ -16,7 +16,7 @@ class FileTaskRepository implements TaskRepositoryInterface
         if (file_get_contents("storage/task.json")===true){
             $bd = json_decode("storage/task.json",true);
         }
-        array_push($bd,new Task("Поесть вкусняшки"));
+        array_push($bd,$task);
         $jsonString = json_encode($bd);
         file_put_contents('storage/task.json', $jsonString);
     }
