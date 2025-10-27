@@ -7,18 +7,20 @@ class FileTaskRepository implements TaskRepositoryInterface
 {
 
     public function findAll(): array{
-        if (file_get_contents("storage/task.json")===true){
-            $bd = json_decode("storage/task.json",true);
+        require_once ('config.php');
+        if (file_get_contents($config['storage'])===true){
+            $bd = json_decode($config['storage'],true);
         }
         return $bd;
     }
     public function add(Task $task): void{
-        if (file_get_contents("storage/task.json")===true){
-            $bd = json_decode("storage/task.json",true);
+        require_once ('config.php');
+        if (file_get_contents($config['storage'])===true){
+            $bd = json_decode($config['storage'],true);
         }
         array_push($bd,$task);
         $jsonString = json_encode($bd);
-        file_put_contents('storage/task.json', $jsonString);
+        file_put_contents($config['storage'], $jsonString);
     }
 }
 ?>
