@@ -8,31 +8,55 @@ use PDO;
 class MySqlTaskRepository implements TaskRepositoryInterface
 {
     private $pdo;
+    
     public function __construct(PDO $pdo){
         $this->pdo = $pdo;
         $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $this->pdo->exec("Set Name utf8mb4");
+        $this->pdo->exec("SET NAMES utf8mb4");
     }
+    
     public function findAll(): array
     {
-        $a = $this ->pdo->query("Select id title completed");
-        $b = $a->fetchAll(PDO::FETCH_ASSOC);
-        $tasks =[];
-        foreach ($b as $bs)
-            {
-                $tasks[]=new Task($bs['title'], (bool)$bs['completed'],$bs['id']);
-            }    
+        $stmt = $this->pdo->query("SELECT id, title, completed FROM tasks");
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $tasks = [];
+        
+        foreach ($rows as $row) {
+            $tasks[] = new Task($row['title'], (bool)$row['completed'], $row['id']);
+        }    
+        
         return $tasks;
-    
-    
     }
-    public function add(App\Model\Task $task): void
+    
+    public function add(Task $task): void
     {
-        $a = $this ->pdo->prepare('Insert tasks');
-        $a->execute([
-            ':title'=> $task->getTitle(),
-            ':completed'=> $task->isCompleted()? 1 : 0,
+        $stmt = $this->pdo->prepare('INSERT INTO tasks (title, completed) VALUES (:title, :completed)');
+        $stmt->execute([
+            ':title' => $task->getTitle(),
+            ':completed' => $task->isCompleted() ? 1 : 0,
         ]);
     }
+    
+    public function toggle(int $taskId): void
+    {
+        // Сначала получаем текущий статус
+        $stmt = $this->pdo->prepare("SELECT completed FROM tasks WHERE id = :id");
+        $stmt->execute([':id' => $taskId]);
+        $currentStatus = $stmt->fetchColumn();
+        
+        // Переключаем статус
+        $newStatus = $currentStatus ? 0 : 1;
+        
+        $stmt = $this->pdo->prepare("UPDATE tasks SET completed = :completed WHERE id = :id");
+        $stmt->execute([
+            ':completed' => $newStatus,
+            ':id' => $taskId
+        ]);
+    }
+    
+    public function delete(int $taskId): void
+    {
+        $stmt = $this->pdo->prepare("DELETE FROM tasks WHERE id = :id");
+        $stmt->execute([':id' => $taskId]);
+    }
 }
-?>
