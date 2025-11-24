@@ -34,24 +34,18 @@
         }
         .add {
             display: inline-block;
-            background-color: #faf5e8ff;
-            border-style: solid;
-            border-color: #aca695ff;
-            border-width: 2px;
+            background-color: #ffffffff;
             color: black;
             padding: 12px 24px;
             text-decoration: none;
             border-radius: 6px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             font-weight: bold;
             transition: background-color 0.3s;
         }
         .add:hover {
             background-color: #5b79daff;
-            border-style: solid;
-            border-color: #293a75ff;
-            border-width: 2px;
             color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         .toggle {
             background: none;
@@ -116,7 +110,7 @@
                 <li class="<?= $task->isCompleted() ? 'completed' : '' ?>">
                     <button class="toggle <?= $task->isCompleted() ? 'completed' : '' ?>" 
                             onclick="location.href='?route=task/toggle&id=<?= $task->getId() ?>'">
-                        <?= $task->isCompleted() ? "✓" : "❌" ?>
+                        <?= $task->isCompleted() ? "✔️" : "❌" ?>
                     </button>
                     
                     

@@ -27,24 +27,35 @@
             box-sizing: border-box;
         }
         button {
-            background-color: #007bff;
-            color: white;
-            padding: 10px 20px;
+            background-color: #ffffffff;
+            color: black;
+            padding: 12px 24px;
+            margin: 10px;
             border: none;
             border-radius: 4px;
+            font-size: 16px;
             cursor: pointer;
+
         }
         button:hover {
-            background-color: #0056b3;
+            background-color: #6384f1ff;
+            color: white;
         }
         .back {
             display: inline-block;
-            margin-top: 15px;
-            color: #007bff;
+            background-color: #ffffffff;
+            color: black;
+            padding: 12px 24px;
+            margin: 10px;
             text-decoration: none;
+            border-radius: 6px;
+            transition: background-color 0.3s;
+            font-size: 16px;
         }
         .back:hover {
-            text-decoration: underline;
+            background-color: #6384f1ff;
+            color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         .error {
             color: red;
@@ -69,7 +80,7 @@
         <button type="submit">Добавить задачу</button>
     </form>
     
-    <a href="?route=task/list" class="back">Вернуться к списку задач</a>
+    <a href="?route=task/list" class="back">Назад</a>
 </body>
 
 </html>
