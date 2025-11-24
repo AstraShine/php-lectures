@@ -39,8 +39,11 @@
         }
         .add {
             display: inline-block;
-            background-color: #dbc783ff;
-            color: white;
+            background-color: #faf5e8ff;
+            border-style: solid;
+            border-color: #aca695ff;
+            border-width: 2px;
+            color: black;
             padding: 12px 24px;
             text-decoration: none;
             border-radius: 6px;
@@ -48,10 +51,16 @@
             font-weight: bold;
             transition: background-color 0.3s;
         }
+        .add:hover {
+            background-color: #5b79daff;
+            border-style: solid;
+            border-color: #293a75ff;
+            border-width: 2px;
+            color: white;
+        }
         .toggle {
             background: none;
             border: 2px solid #ffffffff;
-            border-radius: 50%;
             width: 32px;
             height: 32px;
             cursor: pointer;
@@ -59,21 +68,17 @@
             align-items: center;
             justify-content: center;
             font-size: 16px;
-            transition: all 0.3s ease;
-            flex-shrink: 0;
         }
         .task-toggle:hover {
-            background-color: #ffffffff;
+            background-color: #ebb8a8ff;
             color: white;
         }
         .task-toggle.completed {
-            background-color: white;
+            background-color: #11c437ff;
             border-color: white;
-            color: #28a745;
         }
         .task-toggle.completed:hover {
             background-color: #f8f9fa;
-            color: #28a745;
         }
         .content {
             flex-grow: 1;
@@ -125,10 +130,11 @@
         <ul>
             <?php foreach ($tasks as $task): ?>
                 <li class="<?= $task->isCompleted() ? 'completed' : '' ?>">
-                    <button class="toggle <?= $task->isCompleted() ? 'completed' : '' ?>" 
+                    <button class="task-toggle <?= $task->isCompleted() ? 'completed' : '' ?>" 
                             onclick="location.href='?route=task/toggle&id=<?= $task->getId() ?>'">
                         <?= $task->isCompleted() ? "✓" : "❌" ?>
                     </button>
+                    
                     
                     <div class="content">
                         <?= htmlspecialchars($task->getTitle()) ?>
@@ -143,6 +149,7 @@
                 </li>
             <?php endforeach; ?>
         </ul>
+        
 </body>
 
 </html>

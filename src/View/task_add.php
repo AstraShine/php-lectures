@@ -69,7 +69,7 @@
         <button type="submit">Добавить задачу</button>
     </form>
     
-    <a href="?route=task/list" class="link">Назад</a>
+    <a href="?route=task/list" class="back-link">← Вернуться к списку задач</a>
 </body>
 
 </html>
