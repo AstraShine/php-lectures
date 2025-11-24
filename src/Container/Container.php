@@ -25,7 +25,7 @@ class Container {
         switch ($id) {
             case PDO::class:
                 $db = $this->config['db'];
-                return new PDO($db['dsn'], $db['user'], $db['pass'], $db['options'] ?? []);
+                return new PDO($db['dsn'], $db['user'], $db['password'], $db['options'] ?? []);
             
             case FileTaskRepository::class:
                 return new FileTaskRepository($this->config['storage']['file']);

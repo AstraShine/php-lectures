@@ -32,11 +32,6 @@
             align-items: center;
             transition: all 0.3s ease;
         }
-        li.completed {
-            background-color: #28a745;
-            border-left-color: #1e7e34;
-            color: white;
-        }
         .add {
             display: inline-block;
             background-color: #faf5e8ff;
@@ -68,13 +63,6 @@
             align-items: center;
             justify-content: center;
             font-size: 16px;
-        }
-        .toggle.completed {
-            background-color: #11c437ff;
-            border-color: white;
-        }
-        .toggle.completed:hover {
-            background-color: #f8f9fa;
         }
         .content {
             flex-grow: 1;

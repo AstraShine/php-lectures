@@ -37,13 +37,13 @@
         button:hover {
             background-color: #0056b3;
         }
-        .link {
+        .back {
             display: inline-block;
             margin-top: 15px;
             color: #007bff;
             text-decoration: none;
         }
-        .link:hover {
+        .back:hover {
             text-decoration: underline;
         }
         .error {
@@ -69,7 +69,7 @@
         <button type="submit">Добавить задачу</button>
     </form>
     
-    <a href="?route=task/list" class="back-link">← Вернуться к списку задач</a>
+    <a href="?route=task/list" class="back">Вернуться к списку задач</a>
 </body>
 
 </html>
