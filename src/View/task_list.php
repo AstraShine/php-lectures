@@ -69,15 +69,11 @@
             justify-content: center;
             font-size: 16px;
         }
-        .task-toggle:hover {
-            background-color: #ebb8a8ff;
-            color: white;
-        }
-        .task-toggle.completed {
+        .toggle.completed {
             background-color: #11c437ff;
             border-color: white;
         }
-        .task-toggle.completed:hover {
+        .toggle.completed:hover {
             background-color: #f8f9fa;
         }
         .content {
@@ -130,7 +126,7 @@
         <ul>
             <?php foreach ($tasks as $task): ?>
                 <li class="<?= $task->isCompleted() ? 'completed' : '' ?>">
-                    <button class="task-toggle <?= $task->isCompleted() ? 'completed' : '' ?>" 
+                    <button class="toggle <?= $task->isCompleted() ? 'completed' : '' ?>" 
                             onclick="location.href='?route=task/toggle&id=<?= $task->getId() ?>'">
                         <?= $task->isCompleted() ? "✓" : "❌" ?>
                     </button>
