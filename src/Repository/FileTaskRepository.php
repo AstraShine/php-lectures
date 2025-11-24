@@ -47,12 +47,13 @@ class FileTaskRepository implements TaskRepositoryInterface
                 $maxId = $existingTask->getId();
             }
         }
-        
-        $tasks[] = [ 
+        $task = [ 
             'id' => $maxId + 1,
             'title' => $task->getTitle(),
             'completed' => $task->isCompleted()
         ];
+
+        array_push($tasks,$task);
         
         file_put_contents($this->filepath, json_encode($tasks, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
     }
