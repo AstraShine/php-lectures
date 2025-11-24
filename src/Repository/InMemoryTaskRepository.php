@@ -9,6 +9,7 @@ class InMemoryTaskRepository implements TaskRepositoryInterface
     private array $tasks = [];
 
     public function __construct() {
+        // Инициализируем начальные задачи
         $this->tasks = [
             new Task("Купить кофе", false, 1),
             new Task("Проспать пары", false, 2),
@@ -21,6 +22,7 @@ class InMemoryTaskRepository implements TaskRepositoryInterface
     }
     
     public function add($task): void { 
+        // Для демонстрации добавляем новую задачу
         $newId = count($this->tasks) + 1;
         $newTask = new Task($task->getTitle(), false, $newId);
         $this->tasks[] = $newTask;
