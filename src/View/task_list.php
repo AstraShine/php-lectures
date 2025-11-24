@@ -31,7 +31,6 @@
             justify-content: space-between;
             align-items: center;
             transition: all 0.3s ease;
-            border-left: 5px solid #007bff;
         }
         li.completed {
             background-color: #28a745;
@@ -49,14 +48,9 @@
             font-weight: bold;
             transition: background-color 0.3s;
         }
-        .add:hover {
-            background-color: #218838;
-            text-decoration: none;
-            color: white;
-        }
-        .task-toggle {
+        .toggle {
             background: none;
-            border: 2px solid #007bff;
+            border: 2px solid #ffffffff;
             border-radius: 50%;
             width: 32px;
             height: 32px;
@@ -69,7 +63,7 @@
             flex-shrink: 0;
         }
         .task-toggle:hover {
-            background-color: #007bff;
+            background-color: #ffffffff;
             color: white;
         }
         .task-toggle.completed {
@@ -81,24 +75,19 @@
             background-color: #f8f9fa;
             color: #28a745;
         }
-        .task-content {
+        .content {
             flex-grow: 1;
             margin: 0 20px;
             font-size: 16px;
         }
-        .task-actions {
+        .actions {
             display: flex;
             gap: 10px;
             align-items: center;
         }
-        .task-status {
-            font-size: 14px;
-            opacity: 0.8;
-            margin-right: 15px;
-        }
-        .delete-btn {
-            background: #dc3545;
-            color: white;
+        .delete {
+            background: #ffffffff;
+            color: black;
             border: none;
             border-radius: 4px;
             padding: 6px 12px;
@@ -106,9 +95,11 @@
             font-size: 12px;
             transition: background-color 0.3s;
         }
-        .delete-btn:hover {
-            background: #c82333;
+        .delete:hover {
+            background: #5373ddff;
+            color: white;
         }
+
         .empty-state {
             text-align: center;
             padding: 40px;
@@ -134,20 +125,17 @@
         <ul>
             <?php foreach ($tasks as $task): ?>
                 <li class="<?= $task->isCompleted() ? 'completed' : '' ?>">
-                    <button class="task-toggle <?= $task->isCompleted() ? 'completed' : '' ?>" 
+                    <button class="toggle <?= $task->isCompleted() ? 'completed' : '' ?>" 
                             onclick="location.href='?route=task/toggle&id=<?= $task->getId() ?>'">
-                        <?= $task->isCompleted() ? "✓" : "" ?>
+                        <?= $task->isCompleted() ? "✓" : "❌" ?>
                     </button>
                     
-                    <div class="task-content">
+                    <div class="content">
                         <?= htmlspecialchars($task->getTitle()) ?>
                     </div>
                     
-                    <div class="task-actions">
-                        <span class="task-status">
-                            <?= $task->isCompleted() ? "✔" : "❌" ?>
-                        </span>
-                        <button class="delete-btn" 
+                    <div class="actions">
+                        <button class="delete" 
                                 onclick="if(confirm('Удалить задачу?')) location.href='?route=task/delete&id=<?= $task->getId() ?>'">
                             Удалить
                         </button>

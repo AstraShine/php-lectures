@@ -58,7 +58,6 @@
     
     <form method="POST" action="?route=task/add">
         <div class="form">
-            <label for="title">Название задачи:</label>
             <input type="text" id="title" name="title" required 
                    placeholder="Введите название задачи..." 
                    value="<?= htmlspecialchars($_POST['title'] ?? '') ?>">
@@ -70,7 +69,7 @@
         <button type="submit">Добавить задачу</button>
     </form>
     
-    <a href="?route=task/list" class="link">← Вернуться к списку задач</a>
+    <a href="?route=task/list" class="link">Назад</a>
 </body>
 
 </html>
