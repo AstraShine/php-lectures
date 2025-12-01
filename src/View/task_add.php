@@ -6,31 +6,24 @@
     <title>Добавить задачу</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            max-width: 600px;
-            margin: 0 auto;
             padding: 20px;
-        }
-        .form {
-            margin-bottom: 15px;
         }
         label {
             display: block;
             margin-bottom: 5px;
-            font-weight: bold;
         }
         input[type="text"] {
             width: 100%;
+            max-width: 600px;
             padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
+            border: 1px solid #2b2b2bff;
+            border-radius: 2px;
         }
         button {
-            background-color: #ffffffff;
+            background-color: white;
             color: black;
-            padding: 12px 24px;
-            margin: 10px;
+            padding: 15px;
+            margin: 15px;
             border: none;
             border-radius: 4px;
             font-size: 16px;
@@ -39,18 +32,20 @@
         }
         button:hover {
             background-color: #6384f1ff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             color: white;
         }
         .back {
             display: inline-block;
-            background-color: #ffffffff;
+            background-color: white;
             color: black;
-            padding: 12px 24px;
-            margin: 10px;
+            padding: 15px;
+            margin: 15px;
+            border: none;
+            border-radius: 4px;
+            font-size: 18px;
+            cursor: pointer;
             text-decoration: none;
-            border-radius: 6px;
-            transition: background-color 0.3s;
-            font-size: 16px;
         }
         .back:hover {
             background-color: #6384f1ff;
@@ -78,9 +73,9 @@
         </div>
         
         <button type="submit">Добавить задачу</button>
+        <a href="?route=task/list" class="back">Назад</a>
     </form>
     
-    <a href="?route=task/list" class="back">Назад</a>
 </body>
 
 </html>
