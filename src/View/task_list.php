@@ -6,41 +6,30 @@
     <title>Лист Задач</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            max-width: 700px;
-            margin: 0 auto;
             padding: 20px;
         }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            background: white;
+        h1 {
             padding: 20px;
         }
         ul {
+            max-width: 1000px;
             list-style: none;
             padding: 0;
         }
         li {
-            padding: 15px;
-            margin: 10px 0;
+            padding: 10px;
             background-color: white;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: all 0.3s ease;
         }
         .add {
             display: inline-block;
-            background-color: #ffffffff;
+            background-color: white;
             color: black;
-            padding: 12px 24px;
+            padding: 15px;
+            border-radius: 4px;
             text-decoration: none;
-            border-radius: 6px;
-            font-weight: bold;
-            transition: background-color 0.3s;
         }
         .add:hover {
             background-color: #5b79daff;
@@ -49,14 +38,14 @@
         }
         .toggle {
             background: none;
-            border: 2px solid #ffffffff;
-            width: 32px;
-            height: 32px;
-            cursor: pointer;
+            border: 2px solid white;
+            width: 30px;
+            height: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 16px;
+            cursor: pointer;
         }
         .content {
             flex-grow: 1;
@@ -69,42 +58,24 @@
             align-items: center;
         }
         .delete {
-            background: #ffffffff;
+            background: white;
             color: black;
-            border: none;
-            border-radius: 4px;
             padding: 6px 12px;
-            cursor: pointer;
             font-size: 12px;
-            transition: background-color 0.3s;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
         }
         .delete:hover {
             background: #5373ddff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             color: white;
-        }
-
-        .empty-state {
-            text-align: center;
-            padding: 40px;
-            background: white;
-        }
-        .empty-state p {
-            color: #6c757d;
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-        h1 {
-            color: #333;
-            margin: 0;
         }
     </style>
 </head>
 
 <body>
-    <div class="header">
-        <h1>Список задач</h1>
-        <a href="?route=task/add" class="add">Добавить задачу</a>
-    </div>
+    <h1>Список задач</h1>
         <ul>
             <?php foreach ($tasks as $task): ?>
                 <li class="<?= $task->isCompleted() ? 'completed' : '' ?>">
@@ -117,7 +88,6 @@
                     <div class="content">
                         <?= htmlspecialchars($task->getTitle()) ?>
                     </div>
-                    
                     <div class="actions">
                         <button class="delete" 
                                 onclick="if(confirm('Удалить задачу?')) location.href='?route=task/delete&id=<?= $task->getId() ?>'">
@@ -127,7 +97,7 @@
                 </li>
             <?php endforeach; ?>
         </ul>
-        
+        <a href="?route=task/add" class="add">Добавить задачу</a>
 </body>
 
 </html>
